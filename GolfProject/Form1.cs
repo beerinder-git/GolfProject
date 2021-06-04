@@ -31,8 +31,40 @@ namespace GolfProject
         {
             //load datatable colums
             datatablecolumns();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string QueryString = @"SELECT * FROM Golf order by ID";
+                //open your connection 
+                connection.Open();
 
+                SqlCommand Command = new SqlCommand(QueryString, connection);
+                //start your DB reader
 
+                SqlDataReader reader = Command.ExecuteReader();
+
+                while (reader.Read()) //looping through data
+                {
+                    //add in each row to the datatable
+                    GolfTable.Rows.Add(
+                        reader["ID"],
+                        reader["Title"],
+                        reader["Firstname"],
+                        reader["Surname"],
+                        reader["Gender"],
+                        reader["DOB"],
+                        reader["Street"],
+                        reader["Suburb"],
+                        reader["City"],
+                        reader["Available week days"],
+                        reader["Handicap"]);
+
+                }
+                reader.Close();//close reader
+                connection.Close();//close connection
+                // add the datatable into your data grid view
+                dgvGolf.DataSource = GolfTable;
+
+            }
         }
 
         private void datatablecolumns()
@@ -62,6 +94,6 @@ namespace GolfProject
             }
         }
 
-
+        
     }
 }
