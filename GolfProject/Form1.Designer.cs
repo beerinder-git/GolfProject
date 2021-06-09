@@ -37,7 +37,7 @@ namespace GolfProject
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.txtGender = new System.Windows.Forms.TextBox();
             this.txtDOB = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtStreet = new System.Windows.Forms.TextBox();
             this.txtSuburb = new System.Windows.Forms.TextBox();
             this.txtCity = new System.Windows.Forms.TextBox();
             this.txtAvailable = new System.Windows.Forms.TextBox();
@@ -106,12 +106,12 @@ namespace GolfProject
             this.txtDOB.Size = new System.Drawing.Size(100, 20);
             this.txtDOB.TabIndex = 7;
             // 
-            // textBox1
+            // txtStreet
             // 
-            this.textBox1.Location = new System.Drawing.Point(26, 355);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 8;
+            this.txtStreet.Location = new System.Drawing.Point(26, 355);
+            this.txtStreet.Name = "txtStreet";
+            this.txtStreet.Size = new System.Drawing.Size(100, 20);
+            this.txtStreet.TabIndex = 8;
             // 
             // txtSuburb
             // 
@@ -150,7 +150,7 @@ namespace GolfProject
             this.Controls.Add(this.txtAvailable);
             this.Controls.Add(this.txtCity);
             this.Controls.Add(this.txtSuburb);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtStreet);
             this.Controls.Add(this.txtDOB);
             this.Controls.Add(this.txtGender);
             this.Controls.Add(this.txtTitle);
@@ -177,7 +177,7 @@ namespace GolfProject
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.TextBox txtGender;
         private System.Windows.Forms.TextBox txtDOB;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtStreet;
         private System.Windows.Forms.TextBox txtSuburb;
         private System.Windows.Forms.TextBox txtCity;
         private System.Windows.Forms.TextBox txtAvailable;
