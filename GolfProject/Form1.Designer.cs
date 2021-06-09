@@ -42,6 +42,7 @@ namespace GolfProject
             this.txtCity = new System.Windows.Forms.TextBox();
             this.txtAvailable = new System.Windows.Forms.TextBox();
             this.txtHandicap = new System.Windows.Forms.TextBox();
+            this.btnInsert = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGolf)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,6 +53,7 @@ namespace GolfProject
             this.dgvGolf.Name = "dgvGolf";
             this.dgvGolf.Size = new System.Drawing.Size(411, 269);
             this.dgvGolf.TabIndex = 0;
+            this.dgvGolf.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGolf_CellContentClick);
             this.dgvGolf.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGolf_CellContentClick);
             // 
             // btnLoadDB
@@ -141,11 +143,22 @@ namespace GolfProject
             this.txtHandicap.Size = new System.Drawing.Size(100, 20);
             this.txtHandicap.TabIndex = 12;
             // 
+            // btnInsert
+            // 
+            this.btnInsert.Location = new System.Drawing.Point(596, 22);
+            this.btnInsert.Name = "btnInsert";
+            this.btnInsert.Size = new System.Drawing.Size(75, 23);
+            this.btnInsert.TabIndex = 13;
+            this.btnInsert.Text = "Insert";
+            this.btnInsert.UseVisualStyleBackColor = true;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.txtHandicap);
             this.Controls.Add(this.txtAvailable);
             this.Controls.Add(this.txtCity);
@@ -182,6 +195,7 @@ namespace GolfProject
         private System.Windows.Forms.TextBox txtCity;
         private System.Windows.Forms.TextBox txtAvailable;
         private System.Windows.Forms.TextBox txtHandicap;
+        private System.Windows.Forms.Button btnInsert;
     }
 }
 

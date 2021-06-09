@@ -122,5 +122,34 @@ namespace GolfProject
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnInsert_Click(object sender, EventArgs e)
+        {
+            //this puts the parameters into the code so that the data in the text boxes is added to the database
+            string NewEntry = "INSERT INTO Golf (Title, Firstname, Surname, Gender, DOB, Street, Suburb, City, [Available week days], Handicap) VALUES (@Title, @Firstname, @Surname, @Gender, @DOB, @Street, @Suburb, @City, @Available, @Handicap)";
+            using (SqlCommand newdata = new SqlCommand(NewEntry, Con))
+            {
+                //bind parameters with the textbox value
+
+                newdata.Parameters.AddWithValue("@Title", txtTitle.Text);
+                newdata.Parameters.AddWithValue("@Firstname", txtFirstname.Text);
+                newdata.Parameters.AddWithValue("@Surname", txtSurname.Text);
+                newdata.Parameters.AddWithValue("@Gender", txtGender.Text);
+                newdata.Parameters.AddWithValue("@Street", txtStreet.Text);
+                newdata.Parameters.AddWithValue("@City", txtCity.Text);
+                newdata.Parameters.Add("@DOB", SqlDbType.DateTime).Value = txtDOB.Text;
+                newdata.Parameters.AddWithValue("@Available", txtAvailable.Text);
+                newdata.Parameters.AddWithValue("@Handicap", txtHandicap.Text);
+                newdata.Parameters.AddWithValue("@Suburb", txtSuburb.Text);
+                Con.Open();//open connection to the database
+                //It is a non query as it does not return any data it's only going up to the server
+                newdata.ExecuteNonQuery();// Run the Query
+                Con.Close();// Close a connectionn to the database
+                MessageBox.Show("Data has been inserted");
+                loaddb();// run the load database method so you can see new entree. 
+
+
+            }
+        }
     }
 }
