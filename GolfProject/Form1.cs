@@ -20,6 +20,7 @@ namespace GolfProject
         public Form1()
         {
             InitializeComponent();
+            Con.ConnectionString = connectionString;
         }
 
         private void btnLoadDB_Click(object sender, EventArgs e)
@@ -150,6 +151,44 @@ namespace GolfProject
 
 
             }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            //this updates existing data in the database where the ID of the data equals the ID in the text box
+            string updatestatement = "UPDATE Golf set Title=@Title, Firstname=@Firstname, Surname=@Surname, Gender=@Gender, DOB=@DOB, Street=@Street, Suburb=@Suburb, City=@City, [Available week days]=@Available, Handicap=@Handicap where ID = @ID";
+            SqlCommand update = new SqlCommand(updatestatement, Con);
+            //create the parameters and pass the data from the textboxes
+            update.Parameters.AddWithValue("@ID", txtID.Text);
+            update.Parameters.AddWithValue("@Title", txtTitle.Text);
+            update.Parameters.AddWithValue("@Firstname", txtFirstname.Text);
+            update.Parameters.AddWithValue("@Surname", txtSurname.Text);
+            update.Parameters.AddWithValue("@Street", txtStreet.Text);
+            update.Parameters.AddWithValue("@Suburb", txtSuburb.Text);
+            update.Parameters.AddWithValue("@City", txtCity.Text);
+            update.Parameters.AddWithValue("@Gender", txtGender.Text);
+            update.Parameters.Add("@DOB", SqlDbType.DateTime).Value = txtDOB.Text;
+            update.Parameters.AddWithValue("@Handicap", txtHandicap.Text);
+            update.Parameters.AddWithValue("@Available", txtAvailable.Text);
+            Con.Open();
+
+            //its NONQuery as data is only going up
+            update.ExecuteNonQuery();
+            Con.Close();
+            MessageBox.Show("Data has been Updated");
+            loaddb();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            string DeleteCommand = "DELETE gOLF WHERE ID=@ID";
+            SqlCommand DeleteData = new SqlCommand(DeleteCommand, Con);
+            DeleteData.Parameters.AddWithValue("@ID", txtID.Text);
+            Con.Open();
+            DeleteData.ExecuteNonQuery();
+            Con.Close();
+            MessageBox.Show("Record Deleted !!!!!");
+            loaddb();
         }
     }
 }
